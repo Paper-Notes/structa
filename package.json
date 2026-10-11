@@ -1,0 +1,50 @@
+{
+  "name": "structa",
+  "version": "0.1.0",
+  "description": "Structa is the modeling language of Paper: UML diagrams as typed, Python-flavored text, with a compiler, formatter and language server.",
+  "type": "module",
+  "license": "AGPL-3.0-only",
+  "author": "Paper Notes",
+  "homepage": "https://papernotes.online",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Paper-Notes/structa.git"
+  },
+  "bugs": "https://github.com/Paper-Notes/structa/issues",
+  "keywords": [
+    "uml",
+    "diagrams",
+    "modeling-language",
+    "language-server",
+    "lsp",
+    "mermaid",
+    "plantuml"
+  ],
+  "main": "dist/structa.mjs",
+  "types": "src/index.ts",
+  "bin": {
+    "structa": "dist/cli.mjs",
+    "structa-lsp": "dist/lsp.mjs"
+  },
+  "files": [
+    "dist",
+    "src",
+    "examples",
+    "SPEC.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "node build.mjs && node --test test/*.test.mjs",
+    "check": "npm run typecheck && npm test",
+    "prepare": "node build.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "esbuild": "0.28.2",
+    "typescript": "7.0.2"
+  }
+}

@@ -1,0 +1,13 @@
+title "How an npm package becomes an attack"
+
+actor attacker "Attacker"
+action phish_maintainer "Phishes a maintainer"
+action maintainers "Package maintainers"
+action publish "Publishes an infected version"
+action package "npm package"
+actor developer "Developer who installs it" [color=pink]
+state compromised "Compromised machine" [color=blue]
+
+attacker -> phish_maintainer -> maintainers -> publish -> package
+developer -> package "npm install"
+package -> compromised

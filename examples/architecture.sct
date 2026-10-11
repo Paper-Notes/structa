@@ -1,0 +1,43 @@
+title "Budget assistant · architecture"
+
+let route = "/analyze"
+
+@React
+class Frontend:
+    Form
+    Robot
+    SpeechBubble
+    def play_script(script)
+
+@FastAPI
+module API:
+    def home() -> dict
+    def analyze(input: Input) -> dict
+
+@Pydantic
+class Input:
+    income: float
+    expenses: dict[str, float]
+
+module Engine:
+    CUTS: dict[str, float]
+    def money(value) -> str
+    def build_script(income, expenses) -> dict
+
+@Pydantic
+class Result:
+    income: float
+    total_spent: float
+    left_over: float
+    can_cut: float
+    script: list[Line]
+
+@Pydantic
+class Line:
+    text: str
+
+Frontend -> API "POST {route} (JSON)"
+API uses Input "receives and validates"
+API uses Engine "calls build_script"
+Engine uses Result "returns"
+Result has many Line

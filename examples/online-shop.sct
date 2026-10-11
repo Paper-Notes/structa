@@ -1,0 +1,16 @@
+title "Online shop · use cases"
+
+actor customer "Customer"
+actor payments "Payment provider" [color=gray]
+
+system shop "Online shop":
+    usecase sign_in "Sign in"
+    usecase checkout "Check out"
+    usecase pay "Pay"
+    usecase coupon "Apply coupon"
+
+customer -- sign_in
+customer -- checkout
+checkout includes pay
+coupon extends checkout
+pay -- payments
